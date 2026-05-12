@@ -205,11 +205,14 @@ class OCRRunner:
         model.config.decoder_start_token_id = decoder_start_id
         model.config.pad_token_id = pad_id
         model.config.eos_token_id = eos_id
-        model.config.max_length = self.max_target_length
-        model.config.early_stopping = True
-        model.config.no_repeat_ngram_size = 0
-        model.config.length_penalty = 1.0
-        model.config.num_beams = 4
+        model.generation_config.decoder_start_token_id = decoder_start_id
+        model.generation_config.pad_token_id = pad_id
+        model.generation_config.eos_token_id = eos_id
+        model.generation_config.max_length = self.max_target_length
+        model.generation_config.early_stopping = True
+        model.generation_config.no_repeat_ngram_size = 0
+        model.generation_config.length_penalty = 1.0
+        model.generation_config.num_beams = 4
 
         def preprocess(batch):
             images = [Image.open(p).convert("RGB") for p in batch["image_path"]]
