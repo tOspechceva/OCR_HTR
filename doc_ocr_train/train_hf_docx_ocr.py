@@ -1,4 +1,5 @@
 import argparse
+import inspect
 import json
 import random
 import re
@@ -269,15 +270,21 @@ class OCRRunner:
             report_to=[],
         )
 
-        trainer = Seq2SeqTrainer(
+        # Transformers 5.x: Trainer uses processing_class; older versions used tokenizer.
+        trainer_kw = dict(
             model=model,
-            tokenizer=processor.tokenizer,
             args=args,
             train_dataset=tokenized["train"],
             eval_dataset=tokenized["validation"],
             data_collator=default_data_collator,
             compute_metrics=compute_metrics,
         )
+        _trainer_sig = inspect.signature(Seq2SeqTrainer.__init__)
+        if "processing_class" in _trainer_sig.parameters:
+            trainer_kw["processing_class"] = processor.tokenizer
+        else:
+            trainer_kw["tokenizer"] = processor.tokenizer
+        trainer = Seq2SeqTrainer(**trainer_kw)
 
         trainer.train()
         test_metrics = trainer.evaluate(eval_dataset=tokenized["test"], metric_key_prefix="test")
