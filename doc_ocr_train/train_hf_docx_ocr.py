@@ -271,7 +271,7 @@ class OCRRunner:
 
         trainer = Seq2SeqTrainer(
             model=model,
-            tokenizer=processor.feature_extractor,
+            tokenizer=processor.tokenizer,
             args=args,
             train_dataset=tokenized["train"],
             eval_dataset=tokenized["validation"],
