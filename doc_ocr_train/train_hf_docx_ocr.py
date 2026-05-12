@@ -23,13 +23,14 @@ from transformers import (
     default_data_collator,
 )
 
-
+# Список по умолчанию: только TrOCR *small* — укладывается в типичный VPS без GPU
+# (base/large и узкоспециализированные модели часто убиваются OOM-killer'ом).
+#
+# OCR — печатный текст (printed).
+# HTR — рукописный текст (handwritten).
 DEFAULT_MODELS = [
-    "microsoft/trocr-small-printed",
-    "philschmid/trocr-base-printed",
-    "kazars24/trocr-base-handwritten-ru",
-    "cyrillic-trocr/trocr-handwritten-cyrillic",
-    "taiga75/ru-trocr-1700s",
+    "microsoft/trocr-small-printed",  # OCR (печать)
+    "microsoft/trocr-small-handwritten",  # HTR (рукопись)
 ]
 
 
