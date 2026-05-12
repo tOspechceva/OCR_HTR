@@ -1,0 +1,31 @@
+{
+  "dataset_size": 2890,
+  "splits": {
+    "train": 1849,
+    "validation": 463,
+    "test": 578
+  },
+  "results": [
+    {
+      "model_name": "microsoft/trocr-small-printed",
+      "error": "`tiktoken` is required to read a `tiktoken` file. Install it with `pip install tiktoken`."
+    },
+    {
+      "model_name": "philschmid/trocr-base-printed",
+      "error": "Seq2SeqTrainingArguments.__init__() got an unexpected keyword argument 'evaluation_strategy'"
+    },
+    {
+      "model_name": "kazars24/trocr-base-handwritten-ru",
+      "error": "Seq2SeqTrainingArguments.__init__() got an unexpected keyword argument 'evaluation_strategy'"
+    },
+    {
+      "model_name": "cyrillic-trocr/trocr-handwritten-cyrillic",
+      "error": "Seq2SeqTrainingArguments.__init__() got an unexpected keyword argument 'evaluation_strategy'"
+    },
+    {
+      "model_name": "taiga75/ru-trocr-1700s",
+      "error": "Seq2SeqTrainingArguments.__init__() got an unexpected keyword argument 'evaluation_strategy'"
+    }
+  ],
+  "leaderboard_by_cer": []
+}

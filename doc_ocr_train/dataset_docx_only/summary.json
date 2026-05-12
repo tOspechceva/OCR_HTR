@@ -1,0 +1,8 @@
+{
+  "total_docx": 24,
+  "kept_samples": 24,
+  "train": 16,
+  "val": 3,
+  "test": 5,
+  "seed": 42
+}
